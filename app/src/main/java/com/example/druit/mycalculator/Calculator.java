@@ -18,9 +18,9 @@ public class Calculator extends AppCompatActivity {
     private boolean lastNumeric;
     private boolean stateError;
     private boolean lastDot;
-    private boolean check=false;
+    private boolean check=false; //check parenteses
     private boolean equl=false;
-
+    char[] txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,6 +181,7 @@ public class Calculator extends AppCompatActivity {
                 stateError = false;
                 lastDot = false;
                 equl=false;
+                check=false;
             }
         });
         findViewById(R.id.buttondel).setOnClickListener(new View.OnClickListener() {
@@ -205,6 +206,18 @@ public class Calculator extends AppCompatActivity {
     private void onEnt() {
         if (lastNumeric && !stateError) {
             // Read the expression
+            /* String str = textView3.getText().toString();
+            char[] charArray = str.toCharArray();
+           for (char ch: charArray){
+                textView3.setText(ch);
+            }
+
+           for (int i=0;i<textView3.length();i++){
+                    //if(txt[i] == "0"|| txt[i]=="1" || txt[i] == "2"|| txt[i]=="3" || txt[i] == "4" || txt[i]=="5" || txt[i] == "6" || txt[i]=="7" || txt[i] == "8"|| txt[i]=="9"){
+
+                    //}
+
+            }*/
             String txt = textView3.getText().toString();
             // Create an Expression (A class from exp4j library)
             Expression expression = new ExpressionBuilder(txt).build();
